@@ -14,10 +14,14 @@
  * Add bust opportunity.
  * Add double opportunity.
  * Fix game start not allowing 'Yes' after failing first auth.
+ * Assign a value to face cards.
+ * Find a way to have Ace resemeble either 1 or 11 depending on the user's total.
+ * Integrate a UI.
+ * Integrate a betting/currency system.
  */
 
  import java.util.Random;
- import java.util.*;
+ //import java.util.*;
  import java.util.Scanner;
 
  public class dealer
@@ -25,7 +29,7 @@
 {
    public static void main(String[] args)
     {
-        dealer Tony = new dealer();
+        //dealer Tony = new dealer();
         Scanner scanner = new Scanner(System.in);
 
         String[] card = new String[14]; // The list for the cards to be dealt in an Array.
@@ -101,6 +105,8 @@
         {
             System.out.println("You've made an error by typing an option not on the list. Please type 'Yes' or 'No'.");
         }
+
+        scanner.close();
     }
 }
 
