@@ -14,10 +14,7 @@
  * Find a way to have Ace resemeble either 1 or 11 depending on the user's total.
  * Integrate a UI.
  * Integrate a betting/currency system.
- * Add dealer AI.
- * Make dealer draw til 17.
  * Finalize game on stand, not just exit.
- * Add blackjack win condition.
  */
 
  import java.util.Random;
@@ -120,10 +117,7 @@
                     System.out.println("\nThe Dealer's card is: " + dealerNewCard + "\n");
                     System.out.println("Dealer's total: " + dealerTotal);
 
-                    if(dealerTotal >= 17 && dealerTotal < 21)
-                    {
-                        System.out.println("Dealer stands with a total of: " + dealerTotal);
-                    }
+
 
                     if(dealerTotal > 21)
                     {
@@ -142,6 +136,52 @@
                 else if(choice.equalsIgnoreCase("Stand"))
                 {
                     System.out.println("You have chosen to stand.");
+
+                    while (dealerTotal < 17)
+                    {
+                        int dealerCard = generator.nextInt(card.length);
+                        String dealerNewCard = card[dealerCard];
+                        dealerTotal += getCardValue(dealerNewCard);
+
+                        System.out.println("\nThe Dealer's card is: " + dealerNewCard + "\n");
+                        System.out.println("Dealer's total: " + dealerTotal);
+                        
+                        if(dealerTotal >= 17 && dealerTotal < 21)
+                        {
+                        System.out.println("Dealer stands with a total of: " + dealerTotal);
+                        }
+
+                        if(dealerTotal > 21)
+                        {
+                            System.out.println("Dealer busts! You win! Dealer has exceeded 21. Game over.");
+                            break;
+                        }
+
+                        if(dealerTotal == 21)
+                        {
+                            System.out.println("Dealer has Blackjack! Dealer wins! Game over.");
+                            break;
+                        }
+
+                    }
+
+                    if (dealerTotal <= 21 && dealerTotal >= 17)
+                    {
+                        System.out.println("\nYour total: " + playerTotal);
+
+                        if (playerTotal > dealerTotal)
+                        {
+                            System.out.println("You win! Game over.");
+                        }
+                        else if (playerTotal < dealerTotal)
+                        {
+                            System.out.println("Dealer wins! Game over.");
+                        }
+                        else
+                        {
+                            System.out.println("Push!");
+                        }
+                    }
                 }
             
                 else
