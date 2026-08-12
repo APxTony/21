@@ -7,14 +7,10 @@
 // Notes:
 
 /*
- * Add 'Total' during hit count.
- * Add 'Total' to the end of the game to show the user their final number.
  * Add 'Dealer Total' to show the user the dealer's final number at the end
  * Compare both totals to award victory to user or dealer.
- * Add bust opportunity.
  * Add double opportunity.
  * Fix game start not allowing 'Yes' after failing first auth.
- * Assign a value to face cards.
  * Find a way to have Ace resemeble either 1 or 11 depending on the user's total.
  * Integrate a UI.
  * Integrate a betting/currency system.
