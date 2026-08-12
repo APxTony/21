@@ -12,6 +12,7 @@
  * Find a way to have Ace resemeble either 1 or 11 depending on the user's total.
  * Integrate a UI.
  * Integrate a betting/currency system.
+ * Integrate insurance.
  */
 
  import java.util.Random;
