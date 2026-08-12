@@ -4,6 +4,18 @@
  * This portion houses all of the code
  */
 
+// Notes:
+
+/*
+ * Add 'Total' during hit count.
+ * Add 'Total' to the end of the game to show the user their final number.
+ * Add 'Dealer Total' to show the user the dealer's final number at the end
+ * Compare both totals to award victory to user or dealer.
+ * Add bust opportunity.
+ * Add double opportunity.
+ * Fix game start not allowing 'Yes' after failing first auth.
+ */
+
  import java.util.Random;
  import java.util.*;
  import java.util.Scanner;
@@ -44,64 +56,51 @@
 
         System.out.println("Welcome to Blackjack! Would you like to play?\nIf so, please type 'Yes', if not, please type 'No'.\n");
         String startgamea = scanner.nextLine();
-        if(startgame.equals(startgamea)) // Game will run off of this loop and the code will proceed in here.
+        if(startgame.equalsIgnoreCase(startgamea)) // Game will run off of this loop and the code will proceed in here.
         {
+
             System.out.println("\nGreat, let's begin!\n");
 
             Random generator = new Random();
-            int randomCard = generator.nextInt(card.length); // This is what generates the random card numbers from the Array!
-            int randomCard2 = generator.nextInt(card.length); // Another has been created due to my limited knowledge with Arrays.
-            int randomCard3 = generator.nextInt(card.length);
-            int randomCard4 = generator.nextInt(card.length);
-            int randomCard5 = generator.nextInt(card.length);
+            int randomCard = generator.nextInt(card.length);
 
-            System.out.println(randomCard + " is your card.\n");
-            System.out.println("\nWould you like to test your luck and hit or stand with this final number?\nPlease type 'Hit', if so, if not, please type 'Stand'\n");
+            System.out.println(card[randomCard] + " is your card.\n");
 
-            String nextcard = "Hit";
-            String nextcarda = scanner.nextLine();
-            if(nextcard.equals(nextcarda)) // tests the case for the word 'Hit', if not it'll default to else.
+            String choice = "";
+            while (!choice.equalsIgnoreCase("Stand"))
             {
-                System.out.println("\n" + randomCard2);
-            }
-            else
-            {
-                System.out.println("You have chosen to stand.");
-            }
 
-            System.out.println("\nWould you like to test your luck and hit or stand with this final number?\nPlease type 'Hit', if so, if not, please type 'Stand'\n");
+             System.out.println("\nWould you like to test your luck and hit or stand with this final number?\nPlease type 'Hit', if so, if not, please type 'Stand'\n");
+              choice = scanner.nextLine();
 
-            int x = 0;
-            while(x != 0)
-            {
-                if(nextcard.equals(nextcarda)) // tests the case for the word 'Hit', if not it'll default to else.
+                if(choice.equalsIgnoreCase("Hit"))
                 {
-                    System.out.println("\n" + randomCard3);
-
-                        if(nextcard.equals(nextcarda)) // tests the case for the word 'Hit', if not it'll default to else.
-                        {
-                        System.out.println("\n" + randomCard4);
-                        }
-                        else
-                        {
-                            System.out.println("You have chosen to stand.");
-                        }
+                    int nextCard = generator.nextInt(card.length);
+                    System.out.println("\n" + card[nextCard] + " is your card.\n");
                 }
-                    else
+            
+                else if(choice.equalsIgnoreCase("Stand"))
                 {
                     System.out.println("You have chosen to stand.");
                 }
+            
+                else
+                {
+                  System.out.println("Invalid input. Please type 'Hit' or 'Stand'.");
+                }
+
             }
         }
-        else if(startgame.equals(endgame))
+
+        else if(endgame.equalsIgnoreCase(startgamea)) // If the user types "No" the game will end.
         {
-            System.out.println("Goodbye!");
+            System.out.println("Thank you for playing, please come back soon!");
         }
+            
         else
         {
-            System.out.println("You've made an error by typing an option not on the list or improper capitalization. Please rerun the program.");
+            System.out.println("You've made an error by typing an option not on the list or improper capitalization. Please type 'Yes' or 'No'.");
         }
-       // System.out.println;
-
     }
 }
+
