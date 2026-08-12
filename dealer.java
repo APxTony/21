@@ -81,6 +81,7 @@
                 {
                     int nextCard = generator.nextInt(card.length);
                     System.out.println("\n" + card[nextCard] + " is your card.\n");
+                    String x = card[nextCard];
                 }
             
                 else if(choice.equalsIgnoreCase("Stand"))
@@ -107,6 +108,21 @@
         }
 
         scanner.close();
+    }
+
+    public static int getCardValue(String cardName)
+    {
+        switch (cardName)
+        {
+            case "Ace":
+                return 11;
+            case "Jack":
+            case "Queen":
+            case "King":
+                return 10;
+            default:
+                return Integer.parseInt(cardName);
+        }
     }
 }
 
