@@ -7,14 +7,11 @@
 // Notes:
 
 /*
- * Add 'Dealer Total' to show the user the dealer's final number at the end
- * Compare both totals to award victory to user or dealer.
  * Add double opportunity.
  * Fix game start not allowing 'Yes' after failing first auth.
  * Find a way to have Ace resemeble either 1 or 11 depending on the user's total.
  * Integrate a UI.
  * Integrate a betting/currency system.
- * Finalize game on stand, not just exit.
  */
 
  import java.util.Random;
@@ -108,29 +105,6 @@
                         System.out.println("Blackjack! You win! Game over.");
                         break;
                     }
-
-
-                    int dealerCard = generator.nextInt(card.length);
-                    String dealerNewCard = card[dealerCard];
-                    dealerTotal += getCardValue(dealerNewCard);
-
-                    System.out.println("\nThe Dealer's card is: " + dealerNewCard + "\n");
-                    System.out.println("Dealer's total: " + dealerTotal);
-
-
-
-                    if(dealerTotal > 21)
-                    {
-                        System.out.println("Dealer busts! You win! Dealer has exceeded 21. Game over.");
-                        break;
-                    }
-
-                    if(dealerTotal == 21)
-                    {
-                        System.out.println("Dealer has Blackjack! Dealer wins! Game over.");
-                        break;
-                    }
-
                 }
             
                 else if(choice.equalsIgnoreCase("Stand"))
