@@ -4,8 +4,8 @@
  * This portion runs the game
  */
 
- import java.util.*;  
- import java.util.Scanner;
+ //import java.util.*;  
+ //import java.util.Scanner;
 
  public class blackjack
  
