@@ -99,7 +99,7 @@
             
         else
         {
-            System.out.println("You've made an error by typing an option not on the list or improper capitalization. Please type 'Yes' or 'No'.");
+            System.out.println("You've made an error by typing an option not on the list. Please type 'Yes' or 'No'.");
         }
     }
 }
