@@ -15,6 +15,9 @@
  * Integrate a UI.
  * Integrate a betting/currency system.
  * Add dealer AI.
+ * Make dealer draw til 17.
+ * Finalize game on stand, not just exit.
+ * Add blackjack win condition.
  */
 
  import java.util.Random;
@@ -60,6 +63,7 @@
         if(startgame.equalsIgnoreCase(startgamea)) // Game will run off of this loop and the code will proceed in here.
         {
                 int playerTotal = 0;
+                int dealerTotal = 0;
 
             System.out.println("\nGreat, let's begin!\n");
 
@@ -70,6 +74,13 @@
 
                     System.out.println("\n" + x + " is your card.\n");
                     System.out.println("Your total is: " + playerTotal);
+
+                    int dealerCard0 = generator.nextInt(card.length);
+                    String dealerNewCard0 = card[dealerCard0];
+                    dealerTotal += getCardValue(dealerNewCard0);
+
+                    System.out.println("\nThe Dealer's card is: " + dealerNewCard0 + "\n");
+                    System.out.println("Dealer's total: " + dealerTotal);
 
             String choice = "";
             while (!choice.equalsIgnoreCase("Stand"))
@@ -91,7 +102,38 @@
 
                     if(playerTotal > 21)
                     {
-                        System.out.println("Bust! You have exceeded 21. Game over.");
+                        System.out.println("Bust! Dealer wins! You have exceeded 21. Game over.");
+                        break;
+                    }
+
+                    if(playerTotal == 21)
+                    {
+                        System.out.println("Blackjack! You win! Game over.");
+                        break;
+                    }
+
+
+                    int dealerCard = generator.nextInt(card.length);
+                    String dealerNewCard = card[dealerCard];
+                    dealerTotal += getCardValue(dealerNewCard);
+
+                    System.out.println("\nThe Dealer's card is: " + dealerNewCard + "\n");
+                    System.out.println("Dealer's total: " + dealerTotal);
+
+                    if(dealerTotal >= 17 && dealerTotal < 21)
+                    {
+                        System.out.println("Dealer stands with a total of: " + dealerTotal);
+                    }
+
+                    if(dealerTotal > 21)
+                    {
+                        System.out.println("Dealer busts! You win! Dealer has exceeded 21. Game over.");
+                        break;
+                    }
+
+                    if(dealerTotal == 21)
+                    {
+                        System.out.println("Dealer has Blackjack! Dealer wins! Game over.");
                         break;
                     }
 
