@@ -59,6 +59,7 @@
                 int playerTotal = 0;
                 int dealerTotal = 0;
 
+            System.out.println("-----------------");
             System.out.println("\nGreat, let's begin!\n");
 
             Random generator = new Random();
@@ -81,12 +82,14 @@
             {
 
              System.out.println("\nWould you like to test your luck and hit or stand with this final number?\nPlease type 'Hit', if so, if not, please type 'Stand'\n");
+             System.out.println("-----------------");
               choice = scanner.nextLine();
 
 
 
                 if(choice.equalsIgnoreCase("Hit"))
                 {
+                     System.out.println("-----------------");
                      int nextCard = generator.nextInt(card.length);
                      String newCard = card[nextCard];
                     playerTotal += getCardValue(newCard);
