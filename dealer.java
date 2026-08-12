@@ -18,6 +18,7 @@
  * Find a way to have Ace resemeble either 1 or 11 depending on the user's total.
  * Integrate a UI.
  * Integrate a betting/currency system.
+ * Add dealer AI.
  */
 
  import java.util.Random;
@@ -62,13 +63,17 @@
         String startgamea = scanner.nextLine();
         if(startgame.equalsIgnoreCase(startgamea)) // Game will run off of this loop and the code will proceed in here.
         {
+                int playerTotal = 0;
 
             System.out.println("\nGreat, let's begin!\n");
 
             Random generator = new Random();
-            int randomCard = generator.nextInt(card.length);
+            int Card = generator.nextInt(card.length);
+            String x = card[Card];
+            playerTotal += getCardValue(x);
 
-            System.out.println(card[randomCard] + " is your card.\n");
+                    System.out.println("\n" + x + " is your card.\n");
+                    System.out.println("Your total is: " + playerTotal);
 
             String choice = "";
             while (!choice.equalsIgnoreCase("Stand"))
@@ -77,11 +82,23 @@
              System.out.println("\nWould you like to test your luck and hit or stand with this final number?\nPlease type 'Hit', if so, if not, please type 'Stand'\n");
               choice = scanner.nextLine();
 
+
+
                 if(choice.equalsIgnoreCase("Hit"))
                 {
-                    int nextCard = generator.nextInt(card.length);
-                    System.out.println("\n" + card[nextCard] + " is your card.\n");
-                    String x = card[nextCard];
+                     int nextCard = generator.nextInt(card.length);
+                     String newCard = card[nextCard];
+                    playerTotal += getCardValue(newCard);
+                    
+                    System.out.println("\n" + newCard + " is your card.\n");
+                    System.out.println("Your total is: " + playerTotal);
+
+                    if(playerTotal > 21)
+                    {
+                        System.out.println("Bust! You have exceeded 21. Game over.");
+                        break;
+                    }
+
                 }
             
                 else if(choice.equalsIgnoreCase("Stand"))
